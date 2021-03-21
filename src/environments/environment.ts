@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  contentful: {
+    spaceId: '8un61nyd79ro',
+    token: '_PGwj4oQhYh7NpuWKnMUxka9CkCfC2IylHZd5KNNyow',
+  },
 };
 
 /*
