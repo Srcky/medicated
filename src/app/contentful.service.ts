@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { createClient, Entry } from 'contentful';
+import { createClient, Entry, AssetCollection } from 'contentful';
+import { from, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,29 +14,37 @@ export class ContentfulService {
 
   constructor() {}
 
-  getContent(query?: object): Promise<Entry<any>[]> {
-    return this.client
-      .getEntries(
-        Object.assign(
-          {
-            content_type: 'medicated',
-          },
-          query
+  getContent(query?: object): Observable<Entry<any>[]> {
+    return from(
+      this.client
+        .getEntries(
+          Object.assign(
+            {
+              content_type: 'medicated',
+            },
+            query
+          )
         )
-      )
-      .then(res => res.items);
+        .then(res => res.items)
+    );
   }
 
-  getArticle(articleId: string): Promise<Entry<any>> {
-    return this.client
-      .getEntries(
-        Object.assign(
-          {
-            content_type: 'medicated',
-          },
-          { 'sys.id': articleId }
+  getArticle(articleId: string): Observable<Entry<any>> {
+    return from(
+      this.client
+        .getEntries(
+          Object.assign(
+            {
+              content_type: 'medicated',
+            },
+            { 'sys.id': articleId }
+          )
         )
-      )
-      .then(res => res.items[0]);
+        .then(res => res.items[0])
+    );
+  }
+
+  getAssets(query?: object): Observable<AssetCollection> {
+    return from(this.client.getAssets(query).then(collection => collection));
   }
 }

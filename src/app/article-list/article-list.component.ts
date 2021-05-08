@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Entry } from 'contentful';
+import { Entry, AssetCollection } from 'contentful';
+import { Observable } from 'rxjs';
 import { ContentfulService } from '../contentful.service';
 
 @Component({
@@ -9,7 +10,11 @@ import { ContentfulService } from '../contentful.service';
   styleUrls: ['./article-list.component.scss'],
 })
 export class ArticleListComponent implements OnInit {
-  articles: Entry<any>[] = [];
+  // articles: Entry<any>[] = [];
+  // images: Asset[] = [];
+
+  contents$: Observable<Entry<any>[]> = this.contentfulService.getContent();
+  images$: Observable<AssetCollection> = this.contentfulService.getAssets();
 
   constructor(
     private router: Router,
@@ -17,12 +22,19 @@ export class ArticleListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.contentfulService
-      .getContent()
-      .then(articles => (this.articles = articles));
+    // kao obican promise
+    // this.contentfulService
+    //   .getContent()
+    //   .then(articles => (this.articles = articles));
+    // kao obican promise
+    // this.contentfulService.getAssets().then(img => (this.images = img.items));
   }
 
-  goToArticlePage(articleId) {
+  goToArticlePage(articleId): void {
     this.router.navigate(['/article', articleId]);
+  }
+
+  getImage(stuff): void {
+    console.log(stuff);
   }
 }
