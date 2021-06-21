@@ -1,8 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Entry, AssetCollection } from 'contentful';
+import {
+  Entry,
+  AssetCollection,
+  ContentTypeCollection,
+  ContentType,
+  ContentfulCollection,
+} from 'contentful';
 import { Observable } from 'rxjs';
-import { ContentfulService } from '../contentful.service';
+import { environment } from 'src/environments/environment';
+import { ContentfulService } from '../../contentful.service';
 
 @Component({
   selector: 'app-article-list',
@@ -10,8 +17,11 @@ import { ContentfulService } from '../contentful.service';
   styleUrls: ['./article-list.component.scss'],
 })
 export class ArticleListComponent {
-  contents$: Observable<Entry<any>[]> = this.contentfulService.getContent();
+  contents$ = this.contentfulService.getEntries(
+    environment.contentful.contentTypeIds.medicated
+  );
   // images$: Observable<AssetCollection> = this.contentfulService.getAssets();
+  contentTypes: string[] = [];
 
   constructor(
     private router: Router,

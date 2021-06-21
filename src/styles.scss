@@ -1,2 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~tailwindcss/dist/tailwind.min.css';
+
+$theme-colors: (
+  'primary': #040f53,
+  'secondary': #e43c5e,
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+html,
+body {
+  height: 100%;
+  font-family: 'Comfortaa', cursive;
+  -webkit-font-smoothing: antialiased;
+}

@@ -7,6 +7,11 @@ export const environment = {
   contentful: {
     spaceId: '8un61nyd79ro',
     token: '_PGwj4oQhYh7NpuWKnMUxka9CkCfC2IylHZd5KNNyow',
+    contentTypeIds: {
+      medicated: 'medicated',
+      banner: 'banner',
+      form: 'form'
+    },
   },
 };
 

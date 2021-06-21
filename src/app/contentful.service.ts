@@ -1,6 +1,13 @@
 import { Injectable } from '@angular/core';
-import { createClient, Entry, AssetCollection } from 'contentful';
+import {
+  createClient,
+  Entry,
+  AssetCollection,
+  ContentType,
+  EntryCollection,
+} from 'contentful';
 import { from, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,33 +21,38 @@ export class ContentfulService {
 
   constructor() {}
 
+  getContentTypes(): Observable<ContentType[]> {
+    return from(this.client.getContentTypes().then(res => res.items));
+  }
+
+  getEntries(entryType?): Observable<Entry<any>[]> {
+    return from(
+      this.client.getEntries({ content_type: entryType }).then(res => res.items)
+    );
+  }
+
+  // getAllContentTypes(): Observable<string[]> {
+  //   const contentTypes = [];
+  //   return this.getContentTypes().pipe(
+  //     map(data => {
+  //       data.forEach(item => contentTypes.push(item.name));
+  //       return contentTypes;
+  //     })
+  //   );
+  // }
+
   getContent(query?: object): Observable<Entry<any>[]> {
     return from(
       this.client
         .getEntries(
           Object.assign(
             {
-              content_type: 'medicated',
+              content_type: environment.contentful.contentTypeIds.medicated,
             },
             query
           )
         )
         .then(res => res.items)
-    );
-  }
-
-  getArticle(articleId: string): Observable<Entry<any>> {
-    return from(
-      this.client
-        .getEntries(
-          Object.assign(
-            {
-              content_type: 'medicated',
-            },
-            { 'sys.id': articleId }
-          )
-        )
-        .then(res => res.items[0])
     );
   }
 
