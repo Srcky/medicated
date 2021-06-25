@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { Component, Input, OnInit } from '@angular/core';
+import { Entry } from 'contentful';
+import { Observable } from 'rxjs';
 import { ContentfulService } from '../../contentful.service';
 
 @Component({
@@ -10,9 +11,15 @@ import { ContentfulService } from '../../contentful.service';
 export class BannerComponent implements OnInit {
   constructor(protected contentfulService: ContentfulService) {}
 
-  contents$ = this.contentfulService.getEntries(
-    environment.contentful.contentTypeIds.banner
-  );
+  @Input() bannerId: string;
 
-  ngOnInit(): void {}
+  banner$: Observable<Entry<any>>;
+
+  // contents$: Observable<Entry<any>[]> = this.contentfulService.getEntries(
+  //   environment.contentful.contentTypeIds.banner
+  // );
+
+  ngOnInit(): void {
+    this.banner$ = this.contentfulService.getSingleEntry(this.bannerId);
+  }
 }

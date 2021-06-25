@@ -31,6 +31,10 @@ export class ContentfulService {
     );
   }
 
+  getSingleEntry(entryId): Observable<Entry<any>> {
+    return from(this.client.getEntry(entryId).then(item => item));
+  }
+
   // getAllContentTypes(): Observable<string[]> {
   //   const contentTypes = [];
   //   return this.getContentTypes().pipe(

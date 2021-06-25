@@ -10,7 +10,7 @@ export const environment = {
     contentTypeIds: {
       medicated: 'medicated',
       banner: 'banner',
-      form: 'form'
+      form: 'form',
     },
   },
 };

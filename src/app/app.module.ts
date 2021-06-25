@@ -14,7 +14,6 @@ import { HeaderComponent } from './main-page/header/header.component';
     BannerComponent,
     MainPageComponent,
     HeaderComponent,
-
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

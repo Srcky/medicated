@@ -1,20 +1,11 @@
-<ng-container *ngIf="contents$ | async as contents">
-  <!-- <div class="row" *ngFor="let content of contents">
-    <div class="row">
-      <img src="{{ content.fields?.banner?.fields?.file.url }}" alt="{{ content.fields?.bannerText}}">
-      <h2>{{ content.fields?.bannerText}}</h2>
-      <button class="btn btn-secondary">
-        Button
-      </button>
-    </div>
-    </div> -->
-  <section class="hero spad set-bg" style="background-image: url({{contents[0].fields?.banner?.fields?.file.url}})">
+<ng-container *ngIf="banner$ | async as banner">
+  <section class="hero spad set-bg" style="background-image: url({{banner.fields?.banner?.fields?.file?.url}})">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
           <div class="hero__text">
-            <span>Eiusmod tempor incididunt </span>
-            <h2>Take the world's best quality Treadment</h2>
+            <span>{{ banner.fields?.introText}} </span>
+            <h2>{{ banner.fields?.bannerText}}</h2>
             <a href="#" class="primary-btn normal-btn">Contact us</a>
           </div>
         </div>
