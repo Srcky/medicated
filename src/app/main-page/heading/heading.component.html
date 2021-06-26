@@ -1,0 +1,6 @@
+<ng-container *ngIf="heading$ | async as heading">
+  <ng-container *ngIf="heading.fields as content">
+    <span>{{content.headingContent.content[0]?.content[0]?.value}}</span>
+    <h2>{{content.headingContent.content[1]?.content[0]?.value}}</h2>
+  </ng-container>
+</ng-container>

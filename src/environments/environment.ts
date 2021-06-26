@@ -8,9 +8,11 @@ export const environment = {
     spaceId: '8un61nyd79ro',
     token: '_PGwj4oQhYh7NpuWKnMUxka9CkCfC2IylHZd5KNNyow',
     contentTypeIds: {
-      medicated: 'medicated',
       banner: 'banner',
+      heading: 'heading',
       form: 'form',
+      medicated: 'medicated',
+      richListItems: 'richListItems',
     },
   },
 };

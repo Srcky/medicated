@@ -15,10 +15,6 @@ export class BannerComponent implements OnInit {
 
   banner$: Observable<Entry<any>>;
 
-  // contents$: Observable<Entry<any>[]> = this.contentfulService.getEntries(
-  //   environment.contentful.contentTypeIds.banner
-  // );
-
   ngOnInit(): void {
     this.banner$ = this.contentfulService.getSingleEntry(this.bannerId);
   }

@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class MainPageComponent implements OnInit {
   bannerId = '3C9CxbG4zscYzwdxQoYMVr';
+  contactComponentId = '4y87ehZmC3ec05EgWoaYiV';
 
   constructor() {}
 
