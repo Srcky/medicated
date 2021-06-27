@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { OfferListComponent } from './main-page/offer-list/offer-list.component';
+import { PageListComponent } from './main-page/page-list/page-list.component';
 import { BannerComponent } from './main-page/banner/banner.component';
 import { MainPageComponent } from './main-page/main-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: MainPageComponent },
-  // { path: 'articles', component: OfferListComponent },
+  // { path: 'articles', component: PageListComponent },
   // { path: 'banner', component: BannerComponent },
 ];
 

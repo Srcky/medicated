@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { OfferListComponent } from './main-page/offer-list/offer-list.component';
+import { PageListComponent } from './main-page/page-list/page-list.component';
 import { BannerComponent } from './main-page/banner/banner.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './main-page/header/header.component';
@@ -13,7 +13,7 @@ import { HeadingComponent } from './main-page/heading/heading.component';
 @NgModule({
   declarations: [
     AppComponent,
-    OfferListComponent,
+    PageListComponent,
     BannerComponent,
     MainPageComponent,
     HeaderComponent,

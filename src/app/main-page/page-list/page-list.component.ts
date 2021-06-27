@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { ContentfulService } from '../../contentful.service';
 
 @Component({
-  selector: 'app-offer-list',
-  templateUrl: './offer-list.component.html',
-  styleUrls: ['./offer-list.component.scss'],
+  selector: 'app-page-list',
+  templateUrl: './page-list.component.html',
+  styleUrls: ['./page-list.component.scss'],
 })
-export class OfferListComponent implements OnInit {
+export class PageListComponent implements OnInit {
   @Input() contentId: string;
   @Input() sectionClassName: string;
+  @Input() classCol: string;
 
   contents$: Observable<Entry<any>>;
 

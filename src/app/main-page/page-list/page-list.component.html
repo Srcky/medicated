@@ -1,0 +1,38 @@
+<ng-container *ngIf="contents$ | async as contentsData">
+  <ng-container *ngIf="contentsData.fields as contents">
+    <section
+      class="spad"
+      [ngClass]="sectionClassName"
+      [ngStyle]="
+        contents.backgroundImage?.fields?.file?.url
+          ? {
+              'background-image':
+                'url(' + contents.backgroundImage?.fields?.file?.url + ')'
+            }
+          : null
+      "
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <div class="section-title">
+              <app-heading
+                [headingId]="contents.heading?.sys?.id"
+              ></app-heading>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngFor="let content of contents.items" [ngClass]="classCol">
+            <ng-container *ngIf="content.fields?.richContent as richContent">
+              <div
+                class="{{ sectionClassName }}__item"
+                [innerHTML]="parseInnerHtml(richContent)"
+              ></div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </section>
+  </ng-container>
+</ng-container>
