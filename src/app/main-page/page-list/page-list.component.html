@@ -2,6 +2,7 @@
   <ng-container *ngIf="contentsData.fields as contents">
     <section
       class="spad"
+      [id]="sectionClassName"
       [ngClass]="sectionClassName"
       [ngStyle]="
         contents.backgroundImage?.fields?.file?.url
@@ -24,12 +25,19 @@
         </div>
         <div class="row">
           <div *ngFor="let content of contents.items" [ngClass]="classCol">
-            <ng-container *ngIf="content.fields?.richContent as richContent">
+            <div [ngClass]="sectionClassName + '__item'">
               <div
-                class="{{ sectionClassName }}__item"
+                *ngIf="content.fields?.fontIcon"
+                [ngClass]="sectionClassName + '__item__icon'"
+              >
+                <span [ngClass]="content.fields?.fontIcon"></span>
+              </div>
+              <div
+                *ngIf="content.fields?.richContent as richContent"
+                [ngClass]="sectionClassName + '__item__text'"
                 [innerHTML]="parseInnerHtml(richContent)"
               ></div>
-            </ng-container>
+            </div>
           </div>
         </div>
       </div>

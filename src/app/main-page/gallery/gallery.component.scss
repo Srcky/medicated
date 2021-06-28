@@ -1,0 +1,15 @@
+.gallery {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 340px 340px;
+  grid-gap: 20px;
+  .gallery-item {
+    background-position: top;
+    background-size: cover;
+    &:nth-child(4) {
+      grid-row: span 2;
+    }
+  }
+}

@@ -7,8 +7,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./main-page.component.scss'],
 })
 export class MainPageComponent implements OnInit {
-  bannerId = '3C9CxbG4zscYzwdxQoYMVr';
-
   constructor() {}
 
   ngOnInit(): void {}

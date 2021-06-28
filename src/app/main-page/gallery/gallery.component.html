@@ -1,0 +1,16 @@
+<ng-container *ngIf="contents$ | async as contentsData">
+  <ng-container *ngIf="contentsData.fields?.images as images">
+    <section class="my-4">
+      <div class="gallery">
+        <div
+          *ngFor="let image of images"
+          class="gallery-item"
+          [ngClass]="image.fields.title"
+          [ngStyle]="{
+            'background-image': 'url(' + image.fields.file.url + ')'
+          }"
+        ></div>
+      </div>
+    </section>
+  </ng-container>
+</ng-container>
