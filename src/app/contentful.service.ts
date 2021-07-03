@@ -4,6 +4,7 @@ import { from, Observable } from 'rxjs';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { environment } from '../environments/environment';
+import { ViewportScroller } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class ContentfulService {
     accessToken: environment.contentful.token,
   });
 
-  constructor() {}
+  constructor(private viewScroller: ViewportScroller) {}
 
   getContentTypes(): Observable<ContentType[]> {
     return from(this.client.getContentTypes().then(res => res.items));
@@ -70,5 +71,9 @@ export class ContentfulService {
       },
     };
     return documentToHtmlString(content, options);
+  }
+
+  scrollToView(anchor): void {
+    this.viewScroller.scrollToAnchor(anchor);
   }
 }

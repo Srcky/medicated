@@ -10,6 +10,7 @@ $theme-colors: (
 
 html,
 body {
+  scroll-behavior: smooth;
   height: 100%;
   font-family: 'Comfortaa', cursive;
   -webkit-font-smoothing: antialiased;

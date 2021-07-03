@@ -2,56 +2,37 @@
   <section class="consultation">
     <div class="container">
       <div class="row">
-        <div class="col-lg-4">
-          <!-- <div class="consultation__form">
-            <div class="section-title">
-              <span>REQUEST FOR YOUR</span>
-              <h2>Consultation</h2>
-            </div>
-            <form action="#">
-              <input type="text" placeholder="Name">
-              <input type="text" placeholder="Email">
-              <div class="datepicker__item">
-                <input type="text" placeholder="Date" class="datepicker hasDatepicker" id="dp1620591873738">
-                <i class="fa fa-calendar"></i>
-              </div>
-              <select style="display: none;">
-                <option value="">Type of service</option>
-                <option value="">Advanced equipment</option>
-                <option value="">Qualified doctors</option>
-                <option value="">Certified services</option>
-                <option value="">Emergency care</option>
-              </select>
-              <div class="nice-select" tabindex="0"><span class="current">Type of service</span>
-                <ul class="list">
-                  <li data-value="" class="option selected">Type of service</li>
-                  <li data-value="" class="option">Advanced equipment</li>
-                  <li data-value="" class="option">Qualified doctors</li>
-                  <li data-value="" class="option">Certified services</li>
-                  <li data-value="" class="option">Emergency care</li>
-                </ul>
-              </div>
-              <button type="submit" class="site-btn">Book appoitment</button>
-            </form>
-          </div> -->
-        </div>
-        <div class="col-lg-8">
+        <div class="col-lg-12">
           <div class="consultation__text">
             <div class="row">
               <div class="col-lg-6 col-md-6">
                 <div class="consultation__text__item">
                   <div class="section-title">
-                    <span>{{contactContent.fields?.introHeading}}</span>
-                    <h2>{{contactContent.fields?.headline}}</h2>
+                    <span>{{ contactContent.fields?.introHeading }}</span>
+                    <h2>{{ contactContent.fields?.headline }}</h2>
                   </div>
-                  <p>{{ contactContent.fields?.contentText?.content[0]?.content[0]?.value }}</p>
+                  <p>
+                    {{
+                      contactContent.fields?.contentText?.content[0]?.content[0]
+                        ?.value
+                    }}
+                  </p>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6">
-                <div class="consultation__video set-bg"
-                  style="background-image: url({{contactContent.fields?.placeholderImage?.fields?.file?.url}})">
-                  <a href="{{contactContent.fields?.videoUrl}}" class="play-btn video-popup" target="_blank"
-                    rel="noopener noreferrer"><i class="fa fa-play"></i></a>
+                <div
+                  class="consultation__video set-bg"
+                  style="background-image: url({{
+                    contactContent.fields?.placeholderImage?.fields?.file?.url
+                  }})"
+                >
+                  <a
+                    href="{{ contactContent.fields?.videoUrl }}"
+                    class="play-btn video-popup"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    ><i class="fa fa-play"></i
+                  ></a>
                 </div>
               </div>
             </div>

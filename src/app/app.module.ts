@@ -7,7 +7,6 @@ import { BannerComponent } from './main-page/banner/banner.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './main-page/header/header.component';
 import { ContactComponent } from './main-page/contact/contact.component';
-import { MdToHtmlPipe } from './md-to-html.pipe';
 import { HeadingComponent } from './main-page/heading/heading.component';
 import { GalleryComponent } from './main-page/gallery/gallery.component';
 import { FooterComponent } from './main-page/footer/footer.component';
@@ -20,7 +19,6 @@ import { FooterComponent } from './main-page/footer/footer.component';
     MainPageComponent,
     HeaderComponent,
     ContactComponent,
-    MdToHtmlPipe,
     HeadingComponent,
     GalleryComponent,
     FooterComponent,

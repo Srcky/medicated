@@ -1,7 +1,7 @@
 <ng-container *ngIf="contents$ | async as contentsData">
   <ng-container *ngIf="contentsData.fields?.images as images">
-    <section class="my-4">
-      <div class="gallery">
+    <section>
+      <div class="gallery py-4">
         <div
           *ngFor="let image of images"
           class="gallery-item"
