@@ -6,26 +6,30 @@ import { PageListComponent } from './main-page/page-list/page-list.component';
 import { BannerComponent } from './main-page/banner/banner.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { HeaderComponent } from './main-page/header/header.component';
-import { ContactComponent } from './main-page/contact/contact.component';
+import { IntroComponent } from './main-page/intro/intro.component';
 import { HeadingComponent } from './main-page/heading/heading.component';
 import { GalleryComponent } from './main-page/gallery/gallery.component';
 import { FooterComponent } from './main-page/footer/footer.component';
+import { ContactComponent } from './main-page/contact/contact.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    // AppRoutingModule
+  ],
   declarations: [
     AppComponent,
     PageListComponent,
     BannerComponent,
     MainPageComponent,
     HeaderComponent,
-    ContactComponent,
+    IntroComponent,
     HeadingComponent,
     GalleryComponent,
     FooterComponent,
-  ],
-  imports: [
-    BrowserModule,
-    // AppRoutingModule
+    ContactComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

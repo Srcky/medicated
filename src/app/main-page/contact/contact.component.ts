@@ -1,7 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Entry } from 'contentful';
-import { Observable } from 'rxjs';
-import { ContentfulService } from 'src/app/contentful.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -9,15 +7,24 @@ import { ContentfulService } from 'src/app/contentful.service';
   styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-  constructor(protected contentfulService: ContentfulService) {}
+  constructor(private fb: FormBuilder) {}
 
-  @Input() componentId: string;
-
-  contactContent$: Observable<Entry<any>>;
+  contactForm: FormGroup;
 
   ngOnInit(): void {
-    this.contactContent$ = this.contentfulService.getSingleEntry(
-      this.componentId
-    );
+    this.initForm();
+  }
+
+  initForm(): void {
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      phone: [''],
+      email: ['', Validators.required],
+      message: ['', Validators.required],
+    });
+  }
+
+  submitForm() {
+    console.log(this.contactForm.value);
   }
 }

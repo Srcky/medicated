@@ -1,0 +1,23 @@
+label {
+  color: #ffffff;
+}
+form {
+  input {
+    height: 50px;
+  }
+  input,
+  textarea {
+    color: #ffffff;
+    background-color: #040f53;
+    border: 1px solid #e43c5e;
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &::placeholder {
+      color: #ffffff;
+    }
+    &:-webkit-autofill {
+      -webkit-text-fill-color: #ffffff;
+      -webkit-box-shadow: 0 0 0px 1000px #040f53 inset;
+    }
+  }
+}
