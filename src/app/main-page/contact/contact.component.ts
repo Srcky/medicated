@@ -22,10 +22,14 @@ export class ContactComponent implements OnInit, OnDestroy {
   contactForm$: Observable<Entry<any>>;
 
   contactForm: FormGroup;
+
   namePattern = /^[a-zA-Z\s-]*$/;
-  subscription = new Subscription();
+  numberPattern = /^\+([0-9]*){9,}$/;
+  mailPattern = /^[^@\s]+@[^@\s\.]+\.[^@\.\s]+$/;
   emailSent = false;
   sending = false;
+
+  subscription = new Subscription();
 
   ngOnInit(): void {
     this.contactForm$ = this.contentfulService.getSingleEntry(
@@ -36,10 +40,31 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   initForm(): void {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern(this.namePattern)]],
-      phone: [''],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required],
+      name: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(30),
+          Validators.pattern(this.namePattern),
+        ],
+      ],
+      phone: [
+        '',
+        [
+          Validators.minLength(7),
+          Validators.maxLength(20),
+          Validators.pattern(this.numberPattern),
+        ],
+      ],
+      email: ['', [Validators.required, Validators.pattern(this.mailPattern)]],
+      message: [
+        '',
+        [
+          Validators.minLength(10),
+          Validators.maxLength(500),
+          Validators.required,
+        ],
+      ],
     });
   }
 

@@ -9,9 +9,19 @@
           <input
             class="form-control"
             type="text"
+            required
             [placeholder]="formDefinition.fieldConfigs[0]?.label.en + ' *'"
             formControlName="{{ formDefinition.fieldConfigs[0]?.name }}"
           />
+          <p
+            *ngIf="
+              contactForm.get(formDefinition.fieldConfigs[0]?.name).invalid &&
+              contactForm.get(formDefinition.fieldConfigs[0]?.name).dirty
+            "
+            class="alert alert-danger"
+          >
+            {{ formDefinition.fieldConfigs[0]?.error?.en }}
+          </p>
         </div>
         <div class="form-group">
           <input
@@ -20,22 +30,52 @@
             [placeholder]="formDefinition.fieldConfigs[1]?.label.en"
             formControlName="{{ formDefinition.fieldConfigs[1]?.name }}"
           />
+          <p
+            *ngIf="
+              contactForm.get(formDefinition.fieldConfigs[1]?.name).invalid &&
+              contactForm.get(formDefinition.fieldConfigs[1]?.name).dirty
+            "
+            class="alert alert-danger"
+          >
+            {{ formDefinition.fieldConfigs[1]?.error?.en }}
+          </p>
         </div>
         <div class="form-group">
           <input
             class="form-control"
             type="email"
+            required
             [placeholder]="formDefinition.fieldConfigs[2]?.label.en + ' *'"
             formControlName="{{ formDefinition.fieldConfigs[2]?.name }}"
           />
+          <p
+            *ngIf="
+              contactForm.get(formDefinition.fieldConfigs[2]?.name).invalid &&
+              contactForm.get(formDefinition.fieldConfigs[2]?.name).dirty
+            "
+            class="alert alert-danger"
+          >
+            {{ formDefinition.fieldConfigs[2]?.error?.en }}
+          </p>
         </div>
         <div class="form-group">
           <textarea
             class="form-control"
             rows="4"
+            required
             [placeholder]="formDefinition.fieldConfigs[3]?.label.en + ' *'"
             formControlName="{{ formDefinition.fieldConfigs[3]?.name }}"
           ></textarea>
+          <p
+            *ngIf="
+              contactForm.get(formDefinition.fieldConfigs[3]?.name).invalid &&
+              (contactForm.get(formDefinition.fieldConfigs[3]?.name).dirty ||
+                contactForm.get(formDefinition.fieldConfigs[3]?.name).touched)
+            "
+            class="alert alert-danger"
+          >
+            {{ formDefinition.fieldConfigs[3]?.error?.en }}
+          </p>
         </div>
         <button
           type="submit"
