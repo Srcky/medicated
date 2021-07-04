@@ -12,11 +12,13 @@ import { GalleryComponent } from './main-page/gallery/gallery.component';
 import { FooterComponent } from './main-page/footer/footer.component';
 import { ContactComponent } from './main-page/contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     // AppRoutingModule
   ],
   declarations: [

@@ -1,64 +1,53 @@
-<div class="mb-5">
-  <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
-    <div class="form-group">
-      <label for="">* Your Name:</label
-      ><input class="form-control" type="text" formControlName="name" />
-    </div>
-    <div class="form-group">
-      <label for="">Your Telephone Number:</label
-      ><input class="form-control" type="tel" formControlName="phone" />
-    </div>
-    <div class="form-group">
-      <label for="">* Your E-mail Address:</label
-      ><input class="form-control" type="email" formControlName="email" />
-    </div>
-    <div class="form-group">
-      <label for="">* Your Message:</label
-      ><textarea
-        class="form-control"
-        rows="4"
-        formControlName="message"
-      ></textarea>
-    </div>
-    <button type="submit" class="col-12 site-btn mt-4">Submit</button>
-  </form>
-</div>
-<!-- <form class="formGroup" [formGroup]="defaultForm">
-  <div class="control-wrapper">
-    <label>Destination:</label>
-    <select formControlName="destination" required>
-      <option selected value="">Please select</option>
-      <option
-        *ngFor="let destination of destinations"
-        value="{{ destination }}"
-        >{{ destination }}</option
+<ng-container *ngIf="contactForm$ | async as form">
+  <div class="mb-5">
+    <ng-container *ngIf="form.fields?.formDefinition as formDefinition">
+      <form
+        [formGroup]="this[formDefinition.formCode]"
+        (ngSubmit)="submitForm()"
       >
-    </select>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            [placeholder]="formDefinition.fieldConfigs[0]?.label.en + ' *'"
+            formControlName="{{ formDefinition.fieldConfigs[0]?.name }}"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="tel"
+            [placeholder]="formDefinition.fieldConfigs[1]?.label.en"
+            formControlName="{{ formDefinition.fieldConfigs[1]?.name }}"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="email"
+            [placeholder]="formDefinition.fieldConfigs[2]?.label.en + ' *'"
+            formControlName="{{ formDefinition.fieldConfigs[2]?.name }}"
+          />
+        </div>
+        <div class="form-group">
+          <textarea
+            class="form-control"
+            rows="4"
+            [placeholder]="formDefinition.fieldConfigs[3]?.label.en + ' *'"
+            formControlName="{{ formDefinition.fieldConfigs[3]?.name }}"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          [disabled]="!contactForm.valid || sending"
+          class="col-12 site-btn"
+        >
+          Submit
+        </button>
+      </form>
+    </ng-container>
+    <ng-container *ngIf="emailSent">
+      <h5 class="position-absolute mt-3">Mail sent successfully!</h5>
+    </ng-container>
   </div>
-  <div class="control-wrapper">
-    <label>Start Date:</label>
-    <input type="date" formControlName="startDate" required />
-  </div>
-  <div class="control-wrapper">
-    <label>End Date:</label>
-    <input type="date" formControlName="endDate" required />
-  </div>
-  <div class="control-wrapper">
-    <label>Duration in days:</label>
-    <input type="number" formControlName="durationInDays" required />
-  </div>
-  <div class="control-wrapper">
-    <label>Trip Cost:</label>
-    <input type="number" formControlName="tripCost" required />
-  </div>
-  <div
-    formArrayName="otherTravelers"
-    *ngFor="let traveler of formArr.controls; let i = index"
-  >
-    <div class="control-wrapper" [formGroupName]="i">
-      <label>Additional traveler Age:</label>
-      <input type="number" formControlName="ageOfTraveler" required />
-    </div>
-  </div>
-</form>
-<button (click)="onSubmit()" [disabled]="!defaultForm.valid">Submit</button> -->
+</ng-container>
