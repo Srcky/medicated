@@ -13,6 +13,7 @@ import { FooterComponent } from './main-page/footer/footer.component';
 import { ContactComponent } from './main-page/contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ParseInnerHTMLPipe } from './parse-inner-html.pipe';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     GalleryComponent,
     FooterComponent,
     ContactComponent,
+    ParseInnerHTMLPipe,
   ],
   providers: [],
   bootstrap: [AppComponent],

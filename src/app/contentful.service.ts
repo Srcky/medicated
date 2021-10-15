@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
 import { createClient, Entry, AssetCollection, ContentType } from 'contentful';
 import { from, Observable } from 'rxjs';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { BLOCKS } from '@contentful/rich-text-types';
 import { environment } from '../environments/environment';
-import { ViewportScroller } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -58,19 +56,6 @@ export class ContentfulService {
 
   getAssets(query?: object): Observable<AssetCollection> {
     return from(this.client.getAssets(query).then(collection => collection));
-  }
-
-  parseHtml(content): string {
-    const options = {
-      renderNode: {
-        [BLOCKS.EMBEDDED_ASSET]: node => {
-          const src = node?.data?.target?.fields?.file?.url;
-          const alt = node?.data?.target?.fields?.title;
-          return `<img src="${src}" alt="${alt}">`;
-        },
-      },
-    };
-    return documentToHtmlString(content, options);
   }
 
   scrollToView(anchor): void {

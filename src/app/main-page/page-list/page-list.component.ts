@@ -20,8 +20,4 @@ export class PageListComponent implements OnInit {
   ngOnInit(): void {
     this.contents$ = this.contentfulService.getSingleEntry(this.contentId);
   }
-
-  parseInnerHtml(content): string {
-    return this.contentfulService.parseHtml(content);
-  }
 }
